@@ -1,97 +1,85 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: "Poppins", sans-serif;
-    background: radial-gradient(circle at top, #8a4dff, #4b6aff);
-    min-height: 100vh;
-    color: white;
+    font-family: "Fira Code", monospace;
+    background: linear-gradient(135deg, #1e1b47, #3a2e7a, #4a47d1);
+    background-size: 400% 400%;
+    animation: fondo 12s ease infinite;
+    color: #dcdcff;
 }
 
-/* Encabezado elegante */
+/* Animación del fondo */
+@keyframes fondo {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Encabezado */
 .encabezado {
     text-align: center;
-    padding: 40px 20px;
+    padding: 35px 20px;
 }
 
 .encabezado h1 {
-    font-size: 2.8rem;
-    text-shadow: 0 0 18px rgba(255,255,255,0.7);
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #a9b0ff;
+    text-shadow: 0 0 12px rgba(255,255,255,0.4);
 }
 
-.subtitulo {
-    font-size: 1.3rem;
-    opacity: 0.9;
-    margin-top: -10px;
-}
-
-/* Tarjeta del mensaje */
-.tarjeta {
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(8px);
-    max-width: 900px;
+/* Estilo terminal */
+.terminal {
+    max-width: 950px;
     margin: auto;
-    padding: 35px;
-    border-radius: 22px;
-    border: 1px solid rgba(255,255,255,0.28);
-    line-height: 1.8;
-    box-shadow: 0 0 35px rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 30px;
+    border-radius: 15px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
 }
 
-.tarjeta p {
-    font-size: 1.25rem;
-    margin-bottom: 18px;
+/* Texto en estilo consola */
+.texto {
+    white-space: pre-wrap;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #dcdcff;
 }
 
-/* Texto final destacado */
-.final {
-    text-align: center;
-    margin-top: 25px;
-    font-size: 1.45rem;
-    color: #f4e9ff;
-}
-
-/* Botón globos */
+/* Botón */
 .btn-globos {
+    margin-top: 25px;
     display: block;
-    margin: 30px auto;
-    padding: 14px 30px;
-    background: white;
-    color: #4b28b4;
+    width: 100%;
+    padding: 15px;
+    background: #7450ff;
+    color: white;
     border: none;
-    border-radius: 30px;
-    font-size: 1.2rem;
-    font-weight: bold;
+    border-radius: 10px;
+    font-size: 1.1rem;
     cursor: pointer;
+    font-family: "Fira Code", monospace;
     transition: 0.3s;
-    box-shadow: 0 0 10px rgba(255,255,255,0.6);
 }
 
 .btn-globos:hover {
-    background: #eaddff;
+    background: #a08aff;
+    transform: scale(1.03);
 }
 
 /* Globos */
 .globo {
     position: absolute;
-    bottom: -120px;
-    width: 60px;
-    height: 80px;
+    bottom: -100px;
+    width: 55px;
+    height: 75px;
     border-radius: 50%;
     animation: subir 6s linear infinite;
-    box-shadow: 0 0 15px rgba(255,255,255,0.9);
-}
-
-.globo::after {
-    content: "";
-    width: 2px;
-    height: 30px;
-    background: white;
-    position: absolute;
-    bottom: -30px;
-    left: 50%;
 }
 
 @keyframes subir {
-    0% { transform: translateY(0); opacity: 0.9; }
-    100% { transform: translateY(-130vh); opacity: 0.4; }
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-120vh); opacity: 0.3; }
 }
