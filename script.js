@@ -11,7 +11,7 @@ function crearGlobo() {
     const globo = document.createElement("div");
     globo.classList.add("globo");
 
-    const colores = ["#7b3fff", "#4b6aff", "#5f7bff", "#8a4dff", "#6a5af9"];
+    const colores = ["#4f77ff", "#6c4dff", "#8a5cff", "#4b45ff", "#9670ff"];
     globo.style.background = colores[Math.floor(Math.random() * colores.length)];
 
     globo.style.left = Math.random() * 95 + "vw";
