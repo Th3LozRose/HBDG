@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #ffb7d5, #b28bff);
+    background: linear-gradient(135deg, #4b6aff, #7b3fff);
     height: 100vh;
     overflow-x: hidden;
 }
@@ -16,24 +16,25 @@ body {
 .title {
     font-size: 2.4rem;
     margin-bottom: 20px;
-    text-shadow: 0px 0px 8px rgba(255,255,255,0.6);
+    text-shadow: 0px 0px 10px rgba(180, 150, 255, 0.7);
 }
 
 .mensaje {
     font-size: 1.3rem;
     margin-bottom: 30px;
     line-height: 1.6;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.15);
     padding: 15px;
     border-radius: 12px;
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
 button {
     padding: 12px 22px;
     font-size: 1.1rem;
     background: #ffffff;
-    color: #b62e85;
+    color: #3a2bbd;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -42,18 +43,19 @@ button {
 }
 
 button:hover {
-    background: #ffe6f3;
+    background: #e2ddff;
 }
 
+/* GLOBOS AZULES Y MORADOS */
 .globo {
     position: absolute;
     bottom: -120px;
     width: 60px;
     height: 80px;
-    background: pink;
+    background: #7a5fff;
     border-radius: 50% 50% 45% 45%;
     animation: subir 6s linear infinite;
-    box-shadow: 0 0 10px rgba(255,255,255,0.7);
+    box-shadow: 0 0 15px rgba(200,180,255,0.9);
 }
 
 .globo::after {
@@ -67,6 +69,6 @@ button:hover {
 }
 
 @keyframes subir {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(-120vh) rotate(4deg); }
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.9; }
+    100% { transform: translateY(-120vh) rotate(6deg); opacity: 0.4; }
 }
