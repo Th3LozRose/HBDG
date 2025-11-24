@@ -3,50 +3,70 @@ body {
     padding: 0;
     font-family: "Poppins", sans-serif;
     background: linear-gradient(135deg, #4b6aff, #7b3fff);
-    height: 100vh;
-    overflow-x: hidden;
+    min-height: 100vh;
+    color: white;
 }
 
 .container {
     text-align: center;
     padding: 40px;
-    color: white;
+    max-width: 900px;
+    margin: auto;
 }
 
 .title {
-    font-size: 2.4rem;
-    margin-bottom: 20px;
-    text-shadow: 0px 0px 10px rgba(180, 150, 255, 0.7);
+    font-size: 2.6rem;
+    text-shadow: 0 0 12px rgba(200,180,255,0.9);
 }
 
-.mensaje {
-    font-size: 1.3rem;
-    margin-bottom: 30px;
-    line-height: 1.6;
-    background: rgba(255,255,255,0.15);
-    padding: 15px;
-    border-radius: 12px;
+.sub {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+#mensajeCompleto {
+    margin-top: 25px;
+    background: rgba(255,255,255,0.12);
+    padding: 25px;
+    border-radius: 16px;
+    line-height: 1.7;
+    text-align: left;
     backdrop-filter: blur(6px);
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+#mensajeCompleto p {
+    font-size: 1.15rem;
+    margin-bottom: 16px;
+}
+
+.final {
+    font-size: 1.35rem;
+    text-align: center;
+    color: #f0e6ff;
+    margin-top: 25px;
+    font-weight: bold;
 }
 
 button {
-    padding: 12px 22px;
+    padding: 12px 25px;
     font-size: 1.1rem;
     background: #ffffff;
     color: #3a2bbd;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     transition: 0.3s;
     font-weight: bold;
+    margin-top: 20px;
 }
 
 button:hover {
     background: #e2ddff;
 }
 
-/* GLOBOS AZULES Y MORADOS */
+/* Globos */
 .globo {
     position: absolute;
     bottom: -120px;
