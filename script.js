@@ -8,15 +8,15 @@ btn.addEventListener("click", () => {
     }
 
     // Mensaje al hacer clic
-    alert("🎉 ¡Que tu día sea tan precioso como tú! 🎂💖");
+    alert("🎉 ¡Que tu día sea tan precioso como tú! 💙💜🎂");
 });
 
 function crearGlobo() {
     const globo = document.createElement("div");
     globo.classList.add("globo");
 
-    // Colores tiernos aleatorios
-    const colores = ["#ffcee6", "#ffc8dd", "#ffd6ff", "#cdb4db", "#deaaff", "#f8c8dc"];
+    // Colores azul + morado
+    const colores = ["#6a5af9", "#7b3fff", "#4b6aff", "#5f7bff", "#8a4dff"];
     globo.style.background = colores[Math.floor(Math.random() * colores.length)];
 
     // Posición aleatoria
