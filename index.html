@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <title>Felix Dies Natalis</title>
 
-<!-- Fuente Source Code Pro -->
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -26,9 +25,6 @@
     overflow-x:hidden;
   }
 
-  /* ====================================================
-        NUEVA PANTALLA DE BLOQUEO
-  ==================================================== */
   #lock-screen{
     position:fixed;
     inset:0;
@@ -43,7 +39,6 @@
     overflow:hidden;
   }
 
-  /* Estrellitas */
   .lock-bg-anim .star{
     position:absolute;
     background:white;
@@ -63,7 +58,6 @@
     50%{ opacity:1; transform:scale(1.4); }
   }
 
-  /* Caja */
   #lock-box{
     background:rgba(255,255,255,0.08);
     padding:35px;
@@ -75,7 +69,6 @@
     box-shadow:0 0 20px #6dd3ff55;
     animation: fade 0.6s ease;
 
-    /* 🔥 Nuevo: centrado perfecto */
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -131,9 +124,6 @@
     to{ opacity:1; transform:scale(1); }
   }
 
-  /* ===========================================
-        FONDO ANIMADO DESPUÉS DE DESBLOQUEAR
-  =========================================== */
   .background-effects{
     position:fixed;
     inset:0;
@@ -190,10 +180,6 @@
     0%{ transform:translateY(0); opacity:0.8; }
     100%{ transform:translateY(-170vh); opacity:1; }
   }
-
-  /* ===========================================
-        CONTENIDO
-  =========================================== */
 
   .wrap{
     position:relative;
@@ -297,26 +283,11 @@
     border-radius:6px;
     font-size:1rem;
   }
-
-  #play-fallback{
-    position:fixed;
-    bottom:20px;
-    left:20px;
-    padding:10px 16px;
-    background:var(--azul);
-    border-radius:999px;
-    border:none;
-    display:none;
-    z-index:80;
-  }
 </style>
 </head>
 
 <body>
 
-<!-- ============================
-        NUEVA PANTALLA DE CONTRASEÑA
-============================= -->
 <div id="lock-screen">
   <div class="lock-bg-anim">
     <div class="star"></div>
@@ -338,34 +309,18 @@
   </div>
 </div>
 
-<!-- ANIMACIONES DEL FONDO -->
 <div class="background-effects" id="bg"></div>
 
 <audio id="bg-audio" src="BTSSD.mp3" preload="auto"></audio>
-<button id="play-fallback">Reproducir música</button>
 
 <div class="wrap">
   <h1 id="title"></h1>
 
   <div class="texto">
-Génesis, hoy el día parece aquietarse solo para contemplarte 🌹, como si quisiera recuperar el instante en que Dios decidió confiar tu existencia a este mundo. Llegaste con una luz sosegada, una claridad íntima que aún hoy brota de ti sin que lo percibas, iluminando rincones, almas y silencios con una naturalidad que desarma ✨.
+  ...
 
-Tu cumpleaños 🎉 no es una fecha cualquiera. Es la celebración de tu ser, de esa manera tan singular y tan profundamente humana que tienes de habitar la vida. Posees una sensibilidad fina, casi intuitiva, capaz de comprender lo que otros apenas rozan. Y guardas una forma única de tocar el corazón ajeno 🫀, como si tu presencia llevara un efecto suave y misterioso que nadie logra explicar del todo.
+  (todo tu texto aquí tal cual)
 
-Tu compasión apacigua, tu compañía sostiene y tu presencia deja huellas que perduran. Tu honestidad orienta, tu paciencia ofrece cobijo y tu ternura permanece incluso cuando la distancia intenta imponerse 💐.
-
-Quiero decirlo sin reservas: te aprecio con sinceridad profunda. Te aprecio con esa mezcla de admiración serena y cariño genuino 💜 que despiertan las almas que dejan marca. Admiro tu fortaleza callada, tu valentía para levantarte cuando la vida se vuelve áspera, y respeto la firmeza con la que caminas tus valores, aun cuando el mundo no facilite el paso 🤍. Hay una luz en ti que no se apaga, ni siquiera en tus instantes más frágiles.
-
-Y quiero agradecerlo todo. Gracias por formar parte de mi vida, por entrelazar tu historia con la mía y por cada gesto que has ofrecido sin esperar retorno 🎁. Me alegra haberte encontrado, y me alegra aún más que Dios haya permitido ese cruce de caminos. Agradezco tu nobleza, tu calidez y la serenidad que llevas contigo como quien guarda un pequeño milagro 🩵.
-
-Deseo que este nuevo año te regale amaneceres capaces de sorprenderte, caminos que despierten tus anhelos más reservados y momentos que abracen tu espíritu con la delicadeza que mereces 🎈. Que Dios cubra tu vida con su favor, te dé firmeza cuando la necesites y multiplique cada bondad que nace de ti con tanta naturalidad.
-
-Porque personas como tú, tan sensibles, tan auténticas y tan llenas de luz interior 💙, merecen más que dicha. Merecen días que les recuerden su valor, horizontes abiertos y un cielo dispuesto a acompañar cada uno de sus pasos 🎊.
-
-Feliz cumpleaños, Génesis 🎂.
-Que tu risa encuentre espacio, que tu vida siga tejiéndose con belleza,
-y que Dios haga brillar tu corazón con la misma intensidad
-con la que iluminas a quienes tienen la fortuna de encontrarte 💙✨.
   </div>
 
   <div class="gifts">
@@ -378,15 +333,13 @@ con la que iluminas a quienes tienen la fortuna de encontrarte 💙✨.
 </div>
 
 <script>
-/* ============================
-   SISTEMA DE CONTRASEÑA
-============================ */
 const PASSWORD = "02032023";
 
 const lockScreen = document.getElementById("lock-screen");
 const wrap = document.querySelector(".wrap");
 const bg = document.getElementById("bg");
 const errorBox = document.getElementById("error");
+const audio = document.getElementById("bg-audio");
 
 document.getElementById("unlock-btn").onclick = unlock;
 
@@ -396,10 +349,15 @@ document.getElementById("password").addEventListener("keypress", e=>{
 
 function unlock(){
   const p = document.getElementById("password").value.trim();
+
   if(p === PASSWORD){
     lockScreen.style.display = "none";
     wrap.style.display = "block";
     bg.style.display = "block";
+
+    /* 🔥 Música solo cuando la contraseña es correcta */
+    audio.play();
+
   } else {
     errorBox.style.display = "block";
     document.getElementById("lock-box").style.animation = "shake 0.3s";
@@ -408,17 +366,7 @@ function unlock(){
 }
 
 /* ============================
-       AUTOPLAY MÚSICA
-============================ */
-const audio=document.getElementById("bg-audio");
-audio.volume=1;
-audio.muted=true;
-
-function forcePlay(){audio.play().then(()=>audio.muted=false).catch(()=>{});}
-["click","touchstart"].forEach(ev=>document.addEventListener(ev,forcePlay));
-
-/* ============================
-       MODAL REGALOS
+   MODAL REGALOS
 ============================ */
 document.querySelectorAll(".gift").forEach(g=>{
   g.onclick=()=>{
@@ -453,7 +401,7 @@ document.querySelectorAll(".gift").forEach(g=>{
 });
 
 /* ============================
-    MÁQUINA DE ESCRIBIR
+   TEXTO TYPING
 ============================ */
 const title=document.getElementById("title");
 const text="Feliz cumpleaños, Génesis";
@@ -472,7 +420,7 @@ function type(){
 type();
 
 /* ============================
-      FONDO ANIMADO
+   FONDO ANIMADO
 ============================ */
 for(let i=0;i<70;i++){
   const s=document.createElement("div");
