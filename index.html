@@ -298,7 +298,7 @@
     <h2>🎉 Dies Natalis Tibi Felix 🎉</h2>
 
     <div class="texto" style="opacity:.8; font-size:0.95rem;">
-      Reminiscere te de primo tempore quo facie ad faciem convenimus <br>Exemplum: 01102025
+      Reminiscere te de primo tempore quo facie ad faciem convenimus <br>Ejemplo: 01102025
     </div>
 
     <input type="password" id="password" placeholder="Dies, mensis et annus">
@@ -316,7 +316,24 @@
   <h1 id="title"></h1>
 
   <div class="texto">
-  Aquí va tu texto completo...
+Génesis, hoy el día parece aquietarse solo para contemplarte 🌹, como si quisiera recuperar el instante en que Dios decidió confiar tu existencia a este mundo. Llegaste con una luz sosegada, una claridad íntima que aún hoy brota de ti sin que lo percibas, iluminando rincones, almas y silencios con una naturalidad que desarma ✨.
+
+Tu cumpleaños 🎉 no es una fecha cualquiera. Es la celebración de tu ser, de esa manera tan singular y tan profundamente humana que tienes de habitar la vida. Posees una sensibilidad fina, casi intuitiva, capaz de comprender lo que otros apenas rozan. Y guardas una forma única de tocar el corazón ajeno 🫀, como si tu presencia llevara un efecto suave y misterioso que nadie logra explicar del todo.
+
+Tu compasión apacigua, tu compañía sostiene y tu presencia deja huellas que perduran. Tu honestidad orienta, tu paciencia ofrece cobijo y tu ternura permanece incluso cuando la distancia intenta imponerse 💐.
+
+Quiero decirlo sin reservas: te aprecio con sinceridad profunda. Te aprecio con esa mezcla de admiración serena y cariño genuino 💜 que despiertan las almas que dejan marca. Admiro tu fortaleza callada, tu valentía para levantarte cuando la vida se vuelve áspera, y respeto la firmeza con la que caminas tus valores, aun cuando el mundo no facilite el paso 🤍. Hay una luz en ti que no se apaga, ni siquiera en tus instantes más frágiles.
+
+Y quiero agradecerlo todo. Gracias por formar parte de mi vida, por entrelazar tu historia con la mía y por cada gesto que has ofrecido sin esperar retorno 🎁. Me alegra haberte encontrado, y me alegra aún más que Dios haya permitido ese cruce de caminos. Agradezco tu nobleza, tu calidez y la serenidad que llevas contigo como quien guarda un pequeño milagro 🩵.
+
+Deseo que este nuevo año te regale amaneceres capaces de sorprenderte, caminos que despierten tus anhelos más reservados y momentos que abracen tu espíritu con la delicadeza que mereces 🎈. Que Dios cubra tu vida con su favor, te dé firmeza cuando la necesites y multiplique cada bondad que nace de ti con tanta naturalidad.
+
+Porque personas como tú, tan sensibles, tan auténticas y tan llenas de luz interior 💙, merecen más que dicha. Merecen días que les recuerden su valor, horizontes abiertos y un cielo dispuesto a acompañar cada uno de sus pasos 🎊.
+
+Feliz cumpleaños, Mollejita 🎂.
+Que tu risa encuentre espacio, que tu vida siga tejiéndose con belleza,
+y que Dios haga brillar tu corazón con la misma intensidad
+con la que iluminas a quienes tienen la fortuna de encontrarte 💙✨.
   </div>
 
   <div class="gifts">
@@ -331,37 +348,34 @@
 <script>
 const PASSWORD = "02032023";
 
-const lockScreen = document.getElementById("lock-screen");
-const wrap = document.querySelector(".wrap");
-const bg = document.getElementById("bg");
-const errorBox = document.getElementById("error");
-const audio = document.getElementById("bg-audio");
+const lockScreen=document.getElementById("lock-screen");
+const wrap=document.querySelector(".wrap");
+const bg=document.getElementById("bg");
+const errorBox=document.getElementById("error");
+const audio=document.getElementById("bg-audio");
 
 document.getElementById("unlock-btn").onclick = unlock;
-
 document.getElementById("password").addEventListener("keypress", e=>{
-  if(e.key === "Enter") unlock();
+  if(e.key==="Enter") unlock();
 });
 
 function unlock(){
-  const p = document.getElementById("password").value.trim();
+  const p=document.getElementById("password").value.trim();
 
-  if(p === PASSWORD){
-    lockScreen.style.display = "none";
-    wrap.style.display = "block";
-    bg.style.display = "block";
-
+  if(p===PASSWORD){
+    lockScreen.style.display="none";
+    wrap.style.display="block";
+    bg.style.display="block";
     audio.play();
-
   } else {
-    errorBox.style.display = "block";
-    document.getElementById("lock-box").style.animation = "shake 0.3s";
-    setTimeout(()=>document.getElementById("lock-box").style.animation="", 300);
+    errorBox.style.display="block";
+    document.getElementById("lock-box").style.animation="shake 0.3s";
+    setTimeout(()=>document.getElementById("lock-box").style.animation="",300);
   }
 }
 
 /* ============================
-       MODAL REGALOS (FINAL)
+   MODAL REGALOS – RUTAS DIRECTAS
 ============================ */
 document.querySelectorAll(".gift").forEach(g=>{
   g.onclick=()=>{
@@ -378,7 +392,7 @@ document.querySelectorAll(".gift").forEach(g=>{
 
     close.onclick=()=>{
       overlay.remove();
-      audio.play(); // reanuda música al cerrar
+      audio.play();
     };
 
     overlay.appendChild(close);
@@ -386,20 +400,20 @@ document.querySelectorAll(".gift").forEach(g=>{
     // IMÁGENES: 1, 3, 5
     if(["1","3","5"].includes(id)){
       const img=document.createElement("img");
-      img.src=`m/${id}.jpg`;
+      img.src=`${id}.jpeg`;   // ← ruta corregida
       modal.appendChild(img);
-    } 
+    }
     // VIDEOS: 2, 4
     else if(id === "2" || id === "4"){
       const v=document.createElement("video");
-      v.src=`m/${id}.mp4`;
+      v.src=`${id}.mp4`;       // ← ruta corregida
       v.controls=true;
       v.autoplay=true;
 
-      audio.pause(); // pausa música
+      audio.pause();
 
-      v.onended = () => {
-        audio.play(); // reanuda cuando termina
+      v.onended=()=>{
+        audio.play();
       };
 
       modal.appendChild(v);
@@ -411,17 +425,17 @@ document.querySelectorAll(".gift").forEach(g=>{
 });
 
 /* ============================
-   TEXTO TYPING
+   TYPING
 ============================ */
 const title=document.getElementById("title");
 const text="Feliz cumpleaños, Génesis";
 let idx=0;
 
 function type(){
-  if(idx<text.length){
-    title.textContent=text.substring(0,idx+1);
+  if(idx < text.length){
+    title.textContent=text.substring(0, idx+1);
     idx++;
-    setTimeout(type,90);
+    setTimeout(type, 90);
   } else {
     title.textContent="💙 " + text + " ✨";
     title.classList.add("glow-title");
@@ -430,7 +444,7 @@ function type(){
 type();
 
 /* ============================
-   FONDO ANIMADO
+   EFECTOS FONDO
 ============================ */
 for(let i=0;i<70;i++){
   const s=document.createElement("div");
@@ -445,7 +459,7 @@ for(let i=0;i<70;i++){
 }
 
 for(let i=0;i<14;i++){
-  const f= document.createElement("div");
+  const f=document.createElement("div");
   f.className="firework";
   const size=3+Math.random()*8;
   f.style.width=size+"px";
