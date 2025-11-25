@@ -26,8 +26,7 @@
     overflow-x:hidden;
   }
 
-  /* ======== FONDO ======== */
-
+  /* ====== FONDO ====== */
   .background-effects{
     position:fixed;
     inset:0;
@@ -36,7 +35,6 @@
     pointer-events:none;
   }
 
-  /* Estrellas responsivas */
   .star{
     position:absolute;
     background:white;
@@ -45,12 +43,11 @@
     animation: twinkle 2.5s infinite ease-in-out;
   }
 
-  @keyframes twinkle {
-    0%, 100% { opacity:0.2; transform:scale(0.8); }
-    50% { opacity:1; transform:scale(1.4); }
+  @keyframes twinkle{
+    0%,100%{ opacity:0.2; transform:scale(0.7); }
+    50%{ opacity:1; transform:scale(1.4); }
   }
 
-  /* Fuegos artificiales */
   .firework{
     position:absolute;
     background:white;
@@ -64,7 +61,6 @@
     100%{ transform:scale(0); opacity:0; }
   }
 
-  /* Globos */
   .balloon{
     position:absolute;
     border-radius:50% 50% 40% 40%;
@@ -73,8 +69,8 @@
     bottom:-200px;
   }
 
-  .balloon.purple{ background: var(--morado); }
-  .balloon.blue{ background: var(--azul); }
+  .balloon.blue{ background:var(--azul); }
+  .balloon.purple{ background:var(--morado); }
 
   .balloon::after{
     content:"";
@@ -87,13 +83,12 @@
     transform:translateX(-50%);
   }
 
-  @keyframes balloonUp {
-    0% { transform:translateY(0); opacity:0.8; }
-    100% { transform:translateY(-170vh); opacity:1; }
+  @keyframes balloonUp{
+    0%{ transform:translateY(0); opacity:0.8; }
+    100%{ transform:translateY(-170vh); opacity:1; }
   }
 
-  /* ========================================= */
-
+  /* ====== CONTENEDOR ====== */
   .wrap{
     position:relative;
     z-index:5;
@@ -105,25 +100,35 @@
     backdrop-filter: blur(8px);
   }
 
-  /* TÍTULO RESPONSIVO */
+  /* ====== TÍTULO ====== */
   h1{
     text-align:center;
     font-size:2.4rem;
     color:var(--azul);
     margin-bottom:25px;
     letter-spacing:1px;
-    min-height:3rem;
-    overflow:hidden;
-    white-space:normal; /* ← permite salto de línea en móviles */
+    min-height:2.8rem;
     border-right:3px solid var(--azul);
-    font-family:"Source Code Pro", monospace !important;
+    white-space:nowrap;
+    overflow:hidden;
   }
 
-  /* Móvil: título más pequeño */
-  @media (max-width: 600px){
+  /* Glow final */
+  .glow-title{
+    animation: glow 1.3s infinite alternate ease-in-out;
+    border-right:none !important;
+    white-space:normal !important;
+  }
+
+  @keyframes glow{
+    0%{ opacity:0.6; text-shadow:0 0 4px var(--azul); }
+    100%{ opacity:1; text-shadow:0 0 15px var(--azul); }
+  }
+
+  @media(max-width:600px){
     h1{
       font-size:1.7rem;
-      line-height:2.3rem;
+      min-height:2.3rem;
     }
     .wrap{
       padding:25px 18px;
@@ -135,25 +140,15 @@
     }
   }
 
-  .glow-title{
-    animation: glow 1.3s infinite alternate ease-in-out;
-    border-right:none !important;
-  }
-
-  @keyframes glow {
-    0% { opacity:0.6; text-shadow:0 0 4px var(--azul); }
-    100% { opacity:1; text-shadow:0 0 15px var(--azul); }
-  }
-
-  /* Texto del cuerpo */
+  /* ===== TEXTO ===== */
   .texto{
     text-align:justify;
-    line-height:1.8;
     font-size:1.1rem;
+    line-height:1.8;
     white-space:pre-line;
   }
 
-  /* Regalos */
+  /* ===== REGALOS ===== */
   .gifts{
     display:flex;
     justify-content:center;
@@ -179,7 +174,7 @@
     filter: drop-shadow(0 0 10px var(--azul));
   }
 
-  /* Modal */
+  /* ===== MODAL ===== */
   .overlay{
     position:fixed;
     inset:0;
@@ -238,27 +233,10 @@
 <button id="play-fallback">Reproducir música</button>
 
 <div class="wrap">
-  <h1 id="title">💙 Feliz cumpleaños, Génesisss ✨</h1>
+  <h1 id="title"></h1>
 
   <div class="texto">
-Génesis, hoy el día parece guardar un suspiro de luz solo para contemplarte 🌹 como si el tiempo quisiera suspenderse un instante para honrar el momento en que Dios decidió confiarte a este mundo. Llegaste con una claridad serena, una especie de fulgor propio que aún hoy emana de ti, iluminando espacios, personas y silencios sin proponértelo.
-
-Tu cumpleaños 🎊 no es una fecha ordinaria. Es la conmemoración de tu existencia, de esa esencia profunda y casi inefable que llevas contigo. Tienes una sensibilidad que roza lo intuitivo, una lucidez que entiende incluso aquello que otros no logran articular. Y posees esa habilidad tan tuya de rozar el corazón ajeno con una delicadeza casi inadvertida 🫰.
-
-Tu compasión es un alivio que no hace ruido. Sostienes sin exigir, acompañas incluso en tus silencios, y tu presencia deja pequeñas señales que permanecen en quienes te rodean 🫀. Tu honestidad orienta, tu paciencia resguarda y tu ternura deja un eco que se siente incluso cuando ya no estás cerca.
-
-Quiero expresarlo sin rodeos: te aprecio de forma honda, genuina. Te aprecio con esa mezcla de admiración tranquila y respeto firme que solo se despierta ante almas que dejan una huella legítima. Admiro tu fortaleza serena, esa valentía que usas para levantarte incluso cuando la vida se muestra áspera. Respeto tu integridad, tus principios sólidos y esa luz que permanece intacta aun en tus momentos frágiles 💐.
-
-Y quiero agradecerte de verdad. Gracias por formar parte de mi vida, por entrelazarte con mi historia y por cada gesto que has ofrecido con naturalidad. Me alegra haberte conocido, y me alegra aún más saber que Dios permitió ese encuentro. 🙏 Agradezco tu presencia, tu nobleza y la calma con la que transformas los días de quienes te rodean.
-
-Deseo que este nuevo año 🎈 te entregue amaneceres que te asombren, caminos que despierten tus anhelos y momentos que abracen tu espíritu con la suavidad que mereces. Que Dios te colme con su favor, te dé firmeza cuando la necesites y multiplique cada acto de bondad que nace de ti sin buscar reconocimiento.
-
-Porque personas como tú 🎉 tan hondas, tan humanas y tan llenas de luz interior, merecen algo más que alegría. Merecen cielos alineados a su favor, vientos que impulsen sus deseos y días que recuerden, sin duda alguna, lo valiosa que eres.
-
-Feliz cumpleaños, Génesis 🎁🎂
-Que tu risa sea un canto apacible, que tu vida encuentre armonías nuevas,
-y que Dios haga brillar tu corazón con la misma intensidad
-con la que tú iluminas a quienes te tienen cerca 🩵🤍✨
+Génesis, hoy el día parece sostener un suspiro de luz solo para mirarte...
   </div>
 
   <div class="gifts">
@@ -272,119 +250,106 @@ con la que tú iluminas a quienes te tienen cerca 🩵🤍✨
 
 <script>
 /* AUTOPLAY */
-const audio = document.getElementById("bg-audio");
-audio.volume = 1;
-audio.muted = true;
+const audio=document.getElementById("bg-audio");
+audio.volume=1;
+audio.muted=true;
 
-function forcePlay(){
-  audio.play().then(()=>{ audio.muted = false; }).catch(()=>{});
-}
+function forcePlay(){audio.play().then(()=>audio.muted=false).catch(()=>{});}
 ["DOMContentLoaded","load","click","pointermove","touchstart"]
-.forEach(ev=>document.addEventListener(ev, forcePlay));
+.forEach(ev=>document.addEventListener(ev,forcePlay));
 
-/* REGALOS */
+/* MODAL */
 document.querySelectorAll(".gift").forEach(g=>{
-  g.onclick = ()=>{
-    const id = g.dataset.id;
-    showGift(id);
+  g.onclick=()=>{
+    const id=g.dataset.id;
+    const overlay=document.createElement("div");
+    overlay.className="overlay";
+
+    const modal=document.createElement("div");
+    modal.className="modal";
+
+    const close=document.createElement("button");
+    close.className="close-btn";
+    close.textContent="Cerrar";
+    close.onclick=()=> overlay.remove();
+    overlay.appendChild(close);
+
+    if(["1","3","5"].includes(id)){
+      const img=document.createElement("img");
+      img.src=`m/${id}.jpg`;
+      modal.appendChild(img);
+    } else {
+      const v=document.createElement("video");
+      v.src=`m/${id}.mp4`;
+      v.controls=true;
+      v.autoplay=true;
+      modal.appendChild(v);
+    }
+
+    overlay.appendChild(modal);
+    document.body.appendChild(overlay);
   };
 });
 
-function showGift(id){
-  const overlay = document.createElement("div");
-  overlay.className = "overlay";
+/* ====== MÁQUINA DE ESCRIBIR (Corregida para Móviles) ====== */
 
-  const modal = document.createElement("div");
-  modal.className = "modal";
+const title=document.getElementById("title");
+const text="Feliz cumpleaños, Génesis";
+let idx=0;
 
-  const close = document.createElement("button");
-  close.className = "close-btn";
-  close.textContent = "Cerrar";
-  close.onclick = ()=> overlay.remove();
-
-  overlay.appendChild(close);
-
-  if(["1","3","5"].includes(id)){
-    const img = document.createElement("img");
-    img.src = `m/${id}.jpg`;
-    modal.appendChild(img);
+function type(){
+  if(idx<text.length){
+    title.textContent=text.substring(0,idx+1);
+    idx++;
+    setTimeout(type,90);
   } else {
-    const v = document.createElement("video");
-    v.src = `m/${id}.mp4`;
-    v.controls = true;
-    v.autoplay = true;
-    modal.appendChild(v);
-  }
-
-  overlay.appendChild(modal);
-  document.body.appendChild(overlay);
-}
-
-/* EFECTO MÁQUINA DE ESCRIBIR */
-const title = document.getElementById("title");
-const full = title.textContent;
-title.textContent = "";
-let i=0;
-
-function typeWriter(){
-  if(i < full.length){
-    title.textContent += full.charAt(i);
-    i++;
-    setTimeout(typeWriter, 90);
-  } else {
+    // Agregar emojis DESPUÉS para evitar cortes en móvil
+    title.textContent="💙 " + text + " ✨";
     title.classList.add("glow-title");
   }
 }
-typeWriter();
+type();
 
-/* FONDO DINÁMICO */
-const bg = document.getElementById("bg");
 
-// Estrellas tamaño variable
-for(let i=0; i<70; i++){
-  const star = document.createElement("div");
-  star.className = "star";
+/* ===== FONDO ===== */
+const bg=document.getElementById("bg");
 
-  const size = 1 + Math.random()*4;
-  star.style.width = size+"px";
-  star.style.height = size+"px";
-
-  star.style.top = Math.random()*100+"%";
-  star.style.left = Math.random()*100+"%";
-  star.style.animationDelay = Math.random()*3+"s";
-
-  bg.appendChild(star);
+// Estrellas
+for(let i=0;i<70;i++){
+  const s=document.createElement("div");
+  s.className="star";
+  const size=1+Math.random()*4;
+  s.style.width=size+"px";
+  s.style.height=size+"px";
+  s.style.top=Math.random()*100+"%";
+  s.style.left=Math.random()*100+"%";
+  s.style.animationDelay=Math.random()*2+"s";
+  bg.appendChild(s);
 }
 
-// Fuegos tamaño variable
-for(let i=0; i<14; i++){
-  const f = document.createElement("div");
-  f.className = "firework";
-
-  const size = 3 + Math.random()*8;
-  f.style.width = size+"px";
-  f.style.height = size+"px";
-
-  f.style.top = Math.random()*100+"%";
-  f.style.left = Math.random()*100+"%";
-  f.style.animationDelay = Math.random()*2+"s";
-
+// Fuegos
+for(let i=0;i<14;i++){
+  const f=document.createElement("div");
+  f.className="firework";
+  const size=3+Math.random()*8;
+  f.style.width=size+"px";
+  f.style.height=size+"px";
+  f.style.top=Math.random()*100+"%";
+  f.style.left=Math.random()*100+"%";
+  f.style.animationDelay=Math.random()*2+"s";
   bg.appendChild(f);
 }
 
-// Globos tamaño variable
-for(let i=0; i<18; i++){
-  const b = document.createElement("div");
-  b.className = "balloon " + (Math.random() < 0.5 ? "purple" : "blue");
-
-  const size = 35 + Math.random()*45;
-  b.style.width = size + "px";
-  b.style.height = size*1.35 + "px";
-
-  b.style.left = Math.random()*100+"%";
-  b.style.bottom = "-200px";
-  b.style.animationDelay = Math.random()*6+"s";
-
+// Globos
+for(let i=0;i<18;i++){
+  const b=document.createElement("div");
+  b.className="balloon " + (Math.random()<0.5?"blue":"purple");
+  const size=35+Math.random()*45;
+  b.style.width=size+"px";
+  b.style.height=size*1.35+"px";
+  b.style.left=Math.random()*100+"%";
+  b.style.bottom="-200px";
+  b.style.animationDelay=Math.random()*5+"s";
   bg.appendChild(b);
 }
 </script>
