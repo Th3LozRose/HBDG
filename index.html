@@ -2,8 +2,8 @@
 <html lang="es">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>🌹 Felix Dies Natalis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<title>Felix Dies Natalis</title>
 
 <!-- Fuente Source Code Pro -->
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -26,7 +26,7 @@
     overflow-x:hidden;
   }
 
-  /* ======== FONDO: GLOBOS, ESTRELLAS, FUEGOS ======== */
+  /* ======== FONDO ======== */
 
   .background-effects{
     position:fixed;
@@ -36,7 +36,7 @@
     pointer-events:none;
   }
 
-  /* Estrellas con tamaños variables */
+  /* Estrellas responsivas */
   .star{
     position:absolute;
     background:white;
@@ -50,7 +50,7 @@
     50% { opacity:1; transform:scale(1.4); }
   }
 
-  /* Fuegos artificiales con tamaños variables */
+  /* Fuegos artificiales */
   .firework{
     position:absolute;
     background:white;
@@ -64,7 +64,7 @@
     100%{ transform:scale(0); opacity:0; }
   }
 
-  /* Globos con tamaños aleatorios */
+  /* Globos */
   .balloon{
     position:absolute;
     border-radius:50% 50% 40% 40%;
@@ -105,21 +105,36 @@
     backdrop-filter: blur(8px);
   }
 
-  /* Título con efecto */
+  /* TÍTULO RESPONSIVO */
   h1{
     text-align:center;
-    font-size:2.3rem;
+    font-size:2.4rem;
     color:var(--azul);
     margin-bottom:25px;
     letter-spacing:1px;
     min-height:3rem;
     overflow:hidden;
-    white-space:nowrap;
+    white-space:normal; /* ← permite salto de línea en móviles */
     border-right:3px solid var(--azul);
     font-family:"Source Code Pro", monospace !important;
   }
 
-  /* Efecto parpadeo después de escribir */
+  /* Móvil: título más pequeño */
+  @media (max-width: 600px){
+    h1{
+      font-size:1.7rem;
+      line-height:2.3rem;
+    }
+    .wrap{
+      padding:25px 18px;
+      margin:20px;
+    }
+    .texto{
+      font-size:1rem;
+      line-height:1.65;
+    }
+  }
+
   .glow-title{
     animation: glow 1.3s infinite alternate ease-in-out;
     border-right:none !important;
@@ -130,6 +145,7 @@
     100% { opacity:1; text-shadow:0 0 15px var(--azul); }
   }
 
+  /* Texto del cuerpo */
   .texto{
     text-align:justify;
     line-height:1.8;
@@ -137,6 +153,7 @@
     white-space:pre-line;
   }
 
+  /* Regalos */
   .gifts{
     display:flex;
     justify-content:center;
@@ -162,6 +179,7 @@
     filter: drop-shadow(0 0 10px var(--azul));
   }
 
+  /* Modal */
   .overlay{
     position:fixed;
     inset:0;
@@ -216,7 +234,7 @@
 
 <div class="background-effects" id="bg"></div>
 
-<audio id="bg-audio" src="BTSSD.mp3" preload="auto"></audio>
+<audio id="bg-audio" src="m/BTSSD.mp3" preload="auto"></audio>
 <button id="play-fallback">Reproducir música</button>
 
 <div class="wrap">
@@ -322,12 +340,12 @@ typeWriter();
 /* FONDO DINÁMICO */
 const bg = document.getElementById("bg");
 
-// Estrellas CON TAMAÑOS ALEATORIOS
-for(let i=0; i<90; i++){
+// Estrellas tamaño variable
+for(let i=0; i<70; i++){
   const star = document.createElement("div");
   star.className = "star";
 
-  const size = 1 + Math.random()*4; // 1–5px
+  const size = 1 + Math.random()*4;
   star.style.width = size+"px";
   star.style.height = size+"px";
 
@@ -338,12 +356,12 @@ for(let i=0; i<90; i++){
   bg.appendChild(star);
 }
 
-// Fuegos artificiales CON TAMAÑOS VARIABLES
-for(let i=0; i<18; i++){
+// Fuegos tamaño variable
+for(let i=0; i<14; i++){
   const f = document.createElement("div");
   f.className = "firework";
 
-  const size = 3 + Math.random()*8; // 3–11px
+  const size = 3 + Math.random()*8;
   f.style.width = size+"px";
   f.style.height = size+"px";
 
@@ -354,7 +372,7 @@ for(let i=0; i<18; i++){
   bg.appendChild(f);
 }
 
-// Globos (ya tenían tamaños aleatorios)
+// Globos tamaño variable
 for(let i=0; i<18; i++){
   const b = document.createElement("div");
   b.className = "balloon " + (Math.random() < 0.5 ? "purple" : "blue");
@@ -373,4 +391,3 @@ for(let i=0; i<18; i++){
 
 </body>
 </html>
-
