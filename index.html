@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<title>🌹 Felix Dies Natalis</title>
+<title>Felix Dies Natalis</title>
 
 <!-- Fuente Source Code Pro -->
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -26,13 +26,121 @@
     overflow-x:hidden;
   }
 
-  /* ====== FONDO ====== */
+  /* ====================================================
+        NUEVA PANTALLA DE BLOQUEO
+  ==================================================== */
+  #lock-screen{
+    position:fixed;
+    inset:0;
+    background:linear-gradient(180deg, #0f172a, #2b0f4b);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    z-index:9999;
+    text-align:center;
+    padding:20px;
+    overflow:hidden;
+  }
+
+  /* Estrellitas */
+  .lock-bg-anim .star{
+    position:absolute;
+    background:white;
+    border-radius:50%;
+    width:3px;
+    height:3px;
+    opacity:0.5;
+    animation: twinkle 3s infinite ease-in-out;
+  }
+
+  .lock-bg-anim .star:nth-child(1){ top:20%; left:30%; animation-delay:.4s; }
+  .lock-bg-anim .star:nth-child(2){ top:55%; left:70%; animation-delay:1.2s; }
+  .lock-bg-anim .star:nth-child(3){ top:75%; left:20%; animation-delay:2s; }
+
+  @keyframes twinkle{
+    0%,100%{ opacity:0.2; transform:scale(0.7); }
+    50%{ opacity:1; transform:scale(1.4); }
+  }
+
+  /* Caja */
+  #lock-box{
+    background:rgba(255,255,255,0.08);
+    padding:35px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    width:90%;
+    max-width:350px;
+    box-shadow:0 0 20px #6dd3ff55;
+    animation: fade 0.6s ease;
+
+    /* 🔥 Nuevo: centrado perfecto */
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+  }
+
+  #lock-box h2{
+    margin-bottom:12px;
+    color:var(--azul);
+    font-size:1.45rem;
+    text-shadow:0 0 12px var(--azul);
+  }
+
+  #password{
+    width:85%;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    font-size:1.1rem;
+    outline:none;
+    text-align:center;
+    font-family:"Source Code Pro";
+  }
+
+  #unlock-btn{
+    width:85%;
+    padding:12px;
+    background:var(--azul);
+    border:none;
+    border-radius:6px;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:1.1rem;
+  }
+
+  #error{
+    margin-top:8px;
+    color:#ff7070;
+    display:none;
+  }
+
+  @keyframes shake{
+    0%{ transform:translateX(0); }
+    25%{ transform:translateX(-6px); }
+    50%{ transform:translateX(6px); }
+    75%{ transform:translateX(-6px); }
+    100%{ transform:translateX(0); }
+  }
+
+  @keyframes fade{
+    from{ opacity:0; transform:scale(0.95); }
+    to{ opacity:1; transform:scale(1); }
+  }
+
+  /* ===========================================
+        FONDO ANIMADO DESPUÉS DE DESBLOQUEAR
+  =========================================== */
   .background-effects{
     position:fixed;
     inset:0;
     overflow:hidden;
     z-index:0;
     pointer-events:none;
+    display:none;
   }
 
   .star{
@@ -41,11 +149,6 @@
     border-radius:50%;
     opacity:0.8;
     animation: twinkle 2.5s infinite ease-in-out;
-  }
-
-  @keyframes twinkle{
-    0%,100%{ opacity:0.2; transform:scale(0.7); }
-    50%{ opacity:1; transform:scale(1.4); }
   }
 
   .firework{
@@ -88,7 +191,10 @@
     100%{ transform:translateY(-170vh); opacity:1; }
   }
 
-  /* ====== CONTENEDOR ====== */
+  /* ===========================================
+        CONTENIDO
+  =========================================== */
+
   .wrap{
     position:relative;
     z-index:5;
@@ -98,9 +204,9 @@
     background:rgba(255,255,255,0.05);
     border-radius:14px;
     backdrop-filter: blur(8px);
+    display:none;
   }
 
-  /* ====== TÍTULO ====== */
   h1{
     text-align:center;
     font-size:2.4rem;
@@ -113,7 +219,6 @@
     overflow:hidden;
   }
 
-  /* Glow final */
   .glow-title{
     animation: glow 1.3s infinite alternate ease-in-out;
     border-right:none !important;
@@ -125,22 +230,6 @@
     100%{ opacity:1; text-shadow:0 0 15px var(--azul); }
   }
 
-  @media(max-width:600px){
-    h1{
-      font-size:1.7rem;
-      min-height:2.3rem;
-    }
-    .wrap{
-      padding:25px 18px;
-      margin:20px;
-    }
-    .texto{
-      font-size:1rem;
-      line-height:1.65;
-    }
-  }
-
-  /* ===== TEXTO ===== */
   .texto{
     text-align:justify;
     font-size:1.1rem;
@@ -148,7 +237,6 @@
     white-space:pre-line;
   }
 
-  /* ===== REGALOS ===== */
   .gifts{
     display:flex;
     justify-content:center;
@@ -174,7 +262,6 @@
     filter: drop-shadow(0 0 10px var(--azul));
   }
 
-  /* ===== MODAL ===== */
   .overlay{
     position:fixed;
     inset:0;
@@ -227,6 +314,31 @@
 
 <body>
 
+<!-- ============================
+        NUEVA PANTALLA DE CONTRASEÑA
+============================= -->
+<div id="lock-screen">
+  <div class="lock-bg-anim">
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+  </div>
+
+  <div id="lock-box">
+    <h2>🎉 Dies Natalis Tibi Felix 🎉</h2>
+
+    <div class="texto" style="opacity:.8; font-size:0.95rem;">
+      Diem initium nostrum significans inscribe <br>Exemplum: 01102025
+    </div>
+
+    <input type="password" id="password" placeholder="Dies, mensis et annus">
+    <button id="unlock-btn">Ingredere</button>
+
+    <div id="error">Contraseña incorrecta</div>
+  </div>
+</div>
+
+<!-- ANIMACIONES DEL FONDO -->
 <div class="background-effects" id="bg"></div>
 
 <audio id="bg-audio" src="BTSSD.mp3" preload="auto"></audio>
@@ -266,16 +378,48 @@ con la que iluminas a quienes tienen la fortuna de encontrarte 💙✨.
 </div>
 
 <script>
-/* AUTOPLAY */
+/* ============================
+   SISTEMA DE CONTRASEÑA
+============================ */
+const PASSWORD = "02032023";
+
+const lockScreen = document.getElementById("lock-screen");
+const wrap = document.querySelector(".wrap");
+const bg = document.getElementById("bg");
+const errorBox = document.getElementById("error");
+
+document.getElementById("unlock-btn").onclick = unlock;
+
+document.getElementById("password").addEventListener("keypress", e=>{
+  if(e.key === "Enter") unlock();
+});
+
+function unlock(){
+  const p = document.getElementById("password").value.trim();
+  if(p === PASSWORD){
+    lockScreen.style.display = "none";
+    wrap.style.display = "block";
+    bg.style.display = "block";
+  } else {
+    errorBox.style.display = "block";
+    document.getElementById("lock-box").style.animation = "shake 0.3s";
+    setTimeout(()=>document.getElementById("lock-box").style.animation="", 300);
+  }
+}
+
+/* ============================
+       AUTOPLAY MÚSICA
+============================ */
 const audio=document.getElementById("bg-audio");
 audio.volume=1;
 audio.muted=true;
 
 function forcePlay(){audio.play().then(()=>audio.muted=false).catch(()=>{});}
-["DOMContentLoaded","load","click","pointermove","touchstart"]
-.forEach(ev=>document.addEventListener(ev,forcePlay));
+["click","touchstart"].forEach(ev=>document.addEventListener(ev,forcePlay));
 
-/* MODAL */
+/* ============================
+       MODAL REGALOS
+============================ */
 document.querySelectorAll(".gift").forEach(g=>{
   g.onclick=()=>{
     const id=g.dataset.id;
@@ -308,8 +452,9 @@ document.querySelectorAll(".gift").forEach(g=>{
   };
 });
 
-/* ====== MÁQUINA DE ESCRIBIR (Corregida para Móviles) ====== */
-
+/* ============================
+    MÁQUINA DE ESCRIBIR
+============================ */
 const title=document.getElementById("title");
 const text="Feliz cumpleaños, Génesis";
 let idx=0;
@@ -320,18 +465,15 @@ function type(){
     idx++;
     setTimeout(type,90);
   } else {
-    // Agregar emojis DESPUÉS para evitar cortes en móvil
     title.textContent="💙 " + text + " ✨";
     title.classList.add("glow-title");
   }
 }
 type();
 
-
-/* ===== FONDO ===== */
-const bg=document.getElementById("bg");
-
-// Estrellas
+/* ============================
+      FONDO ANIMADO
+============================ */
 for(let i=0;i<70;i++){
   const s=document.createElement("div");
   s.className="star";
@@ -344,9 +486,8 @@ for(let i=0;i<70;i++){
   bg.appendChild(s);
 }
 
-// Fuegos
 for(let i=0;i<14;i++){
-  const f=document.createElement("div");
+  const f= document.createElement("div");
   f.className="firework";
   const size=3+Math.random()*8;
   f.style.width=size+"px";
@@ -357,7 +498,6 @@ for(let i=0;i<14;i++){
   bg.appendChild(f);
 }
 
-// Globos
 for(let i=0;i<18;i++){
   const b=document.createElement("div");
   b.className="balloon " + (Math.random()<0.5?"blue":"purple");
